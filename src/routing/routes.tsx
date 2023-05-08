@@ -1,8 +1,18 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { NavigationManager } from "../components/NavigationManager";
-import { Page1 } from "../pages/Page1";
-import { Page2 } from "../pages/Page2";
+
+const Page1 = lazy(() =>
+  import("../pages/Page1").then((x) => {
+    return x;
+  })
+);
+
+const Page2 = lazy(() =>
+  import("../pages/Page2").then((x) => {
+    return x;
+  })
+);
 
 export const routes = [
   {
@@ -15,15 +25,27 @@ export const routes = [
     children: [
       {
         index: true,
-        element: <Page1 />,
+        element: (
+          <Suspense fallback="Loading Dashboard Page 1...">
+            <Page1 />
+          </Suspense>
+        ),
       },
       {
         path: "page-1",
-        element: <Page1 />,
+        element: (
+          <Suspense fallback="Loading Dashboard Page 1...">
+            <Page1 />
+          </Suspense>
+        ),
       },
       {
         path: "page-2",
-        element: <Page2 />,
+        element: (
+          <Suspense fallback="Loading Dashboard Page 2...">
+            <Page2 />
+          </Suspense>
+        ),
       },
     ],
   },
