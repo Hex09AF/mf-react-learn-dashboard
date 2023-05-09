@@ -6,6 +6,8 @@ import { RoutingStrategy } from "./routing/types";
 import { Provider } from "react-redux";
 import "./index.scss";
 
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
 const mount = ({
   mountPoint,
   initialPathname,
@@ -19,9 +21,6 @@ const mount = ({
 }) => {
   const router = createRouter({ strategy: routingStrategy, initialPathname });
   const root = createRoot(mountPoint);
-  console.log(routingStrategy, "STRATEGY");
-  console.log(store, "STORE");
-  console.log(router);
 
   root.render(
     <Provider store={store}>

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const exampleSlice = createSlice({
-  name: "example",
+  name: "exampleDashboard",
   initialState: {
     value: 0,
   },
@@ -20,6 +20,6 @@ const exampleSlice = createSlice({
 });
 
 export const { increment, decrement, incrementByAmount } = exampleSlice.actions;
-export const selectCount = (state) => state.example.value;
+export const selectCount = (state) => state.exampleDashboard.value;
 
-export default exampleSlice;
+export default exampleSlice.reducer;
