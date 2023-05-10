@@ -26,7 +26,7 @@ export default function Page1() {
     setFin(true);
   }, []);
 
-  if (!fin) return;
+  if (!fin) return <div></div>;
 
   return (
     <React.Fragment>

@@ -1,12 +1,10 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
+import "./index.scss";
 import { createRouter } from "./routing/router-factory";
 import { RoutingStrategy } from "./routing/types";
-import { Provider } from "react-redux";
-import "./index.scss";
-
-import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const mount = ({
   mountPoint,
@@ -23,7 +21,7 @@ const mount = ({
   const root = createRoot(mountPoint);
 
   root.render(
-    <Provider store={store}>
+    <Provider store={store || {}}>
       <RouterProvider router={router} />
     </Provider>
   );
